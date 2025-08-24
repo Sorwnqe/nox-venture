@@ -1,0 +1,62 @@
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
+
+// Import the generated route tree
+import { routeTree } from './routeTree.gen'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { Provider as JotaiProvider } from 'jotai'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import './index.css'
+
+// Create a new router instance
+const router = createRouter({ routeTree })
+
+// Register the router instance for type safety
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router
+  }
+}
+
+const queryClient = new QueryClient()
+
+// Render the app
+const rootElement = document.getElementById('root')!
+
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement)
+  root.render(
+    <StrictMode>
+      <JotaiProvider>
+        <QueryClientProvider client={queryClient}>
+          <ChakraProvider
+            theme={extendTheme({
+              config: {
+                initialColorMode: 'dark',
+                useSystemColorMode: false,
+              },
+              fonts: {
+                heading: `Monopik, Inter, sans-serif`,
+                body: `Monopik, Inter, sans-serif`,
+              },
+              styles: {
+                global: () => ({
+                  html: {
+                    height: '100%',
+                  },
+                  body: {
+                    bg: '#161616',
+                    color: '#fff',
+                  },
+                }),
+              },
+            })}
+          >
+            <RouterProvider router={router} />
+          </ChakraProvider>
+        </QueryClientProvider>
+      </JotaiProvider>
+    </StrictMode>
+  )
+}

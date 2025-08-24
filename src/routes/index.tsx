@@ -215,7 +215,7 @@ function Index() {
           </Box>
         </Flex>
       </motion.div>
-      <VStack spacing={4} align="stretch" mt="50px">
+      <VStack spacing={4} align="stretch" mt="50px" w="100%">
         {services.map((service, i) => (
           <motion.div
             key={i}

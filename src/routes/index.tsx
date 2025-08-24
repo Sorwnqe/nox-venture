@@ -131,6 +131,7 @@ function Index() {
         </Flex>
         <Box width="100%" id="ABOUT">
           <motion.div
+            layout
             style={{ width: '100%' }}
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
@@ -141,6 +142,7 @@ function Index() {
           </motion.div>
 
           <motion.div
+            layout
             style={{ width: '100%' }}
             initial={{ y: 150, opacity: 0 }}
             whileInView={{ opacity: 1, y: 0, transition: { duration: 1 } }}
@@ -152,6 +154,7 @@ function Index() {
           <Box>
             <Box textAlign="center" fontFamily="Dotemp" fontSize="32px">
               <motion.div
+                layout
                 style={{ width: '100%' }}
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ opacity: 1, y: 0, transition: { duration: 1.3 } }}
@@ -159,6 +162,7 @@ function Index() {
                 <Text mt="12px">NOX Venture is a Full-Lifecycle Crypto Incubation Fund.</Text>
               </motion.div>
               <motion.div
+                layout
                 style={{ width: '100%' }}
                 initial={{ y: 60, opacity: 0 }}
                 whileInView={{ opacity: 1, y: 0, transition: { duration: 1.8 } }}

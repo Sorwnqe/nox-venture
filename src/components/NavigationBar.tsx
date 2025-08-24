@@ -61,14 +61,9 @@ export const NavigationBar: FC = () => {
   const router = history.location.pathname
 
   return (
-    <Center
-      as="nav"
-      className={router === '/' ? '' : 'black'}
-      w="100%"
-      borderBottom="1px solid rgb(132, 115, 249, 0.12)"
-    >
+    <Center as="nav" className={router === '/' ? '' : 'black'} w="100%">
       {showCursor && <TargetCursor spinDuration={0} hideDefaultCursor={false} />}
-      <Flex justify="space-around" w="100%" maxW="1800px" px="20px" align="center" h="100px">
+      <Flex justify="space-around" w="100%" maxW="1800px" px="20px" align="center" h="60px">
         <Menu onOpen={() => setShowCursor(true)} onClose={() => setShowCursor(false)}>
           <MenuButton>
             <BridgeText text="MENU" />

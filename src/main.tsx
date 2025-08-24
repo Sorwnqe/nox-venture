@@ -5,7 +5,6 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import { Provider as JotaiProvider } from 'jotai'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import './index.css'
 
@@ -28,35 +27,33 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <JotaiProvider>
-        <QueryClientProvider client={queryClient}>
-          <ChakraProvider
-            theme={extendTheme({
-              config: {
-                initialColorMode: 'dark',
-                useSystemColorMode: false,
-              },
-              fonts: {
-                heading: `Monopik, Inter, sans-serif`,
-                body: `Monopik, Inter, sans-serif`,
-              },
-              styles: {
-                global: () => ({
-                  html: {
-                    height: '100%',
-                  },
-                  body: {
-                    bg: '#161616',
-                    color: '#fff',
-                  },
-                }),
-              },
-            })}
-          >
-            <RouterProvider router={router} />
-          </ChakraProvider>
-        </QueryClientProvider>
-      </JotaiProvider>
+      <QueryClientProvider client={queryClient}>
+        <ChakraProvider
+          theme={extendTheme({
+            config: {
+              initialColorMode: 'dark',
+              useSystemColorMode: false,
+            },
+            fonts: {
+              heading: `Monopik, Inter, sans-serif`,
+              body: `Monopik, Inter, sans-serif`,
+            },
+            styles: {
+              global: () => ({
+                html: {
+                  height: '100%',
+                },
+                body: {
+                  bg: '#161616',
+                  color: '#fff',
+                },
+              }),
+            },
+          })}
+        >
+          <RouterProvider router={router} />
+        </ChakraProvider>
+      </QueryClientProvider>
     </StrictMode>
   )
 }

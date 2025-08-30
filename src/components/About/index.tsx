@@ -68,7 +68,7 @@ export const AboutSection = () => {
       >
         <Center h="400px" mt="60px">
           {/* 3D 方块 Logo 模拟 */}
-          <Box position="relative" w="400px" h="250px" opacity="0.7">
+          <Box position="relative" w="auto" h="250px" opacity="0.7">
             <video
               src="/about-t.mp4"
               autoPlay

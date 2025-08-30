@@ -1,15 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Box, Center, Flex, Heading, Text, Icon, VStack } from '@chakra-ui/react'
+import { Box, Center, Flex, Heading, VStack } from '@chakra-ui/react'
 import { type FC } from 'react'
 import { motion } from 'framer-motion'
 import { keyframes } from '@emotion/react'
 import UnicornScene from 'unicornstudio-react'
 import CountUpText from '../components/CountUpText'
 import Title from '../components/Title'
-import { LogoSvg } from '../components/icons/logo.svg'
-import { ArrowDownSvg } from '../components/icons/arrow-down'
 import ServiceLines from '../components/ServiceLines'
 import LogoLoop, { LogoItem } from '../components/LogoLoop'
+import { LogoSvg } from '../components/icons/logo.svg'
+import { AboutSection } from '../components/About'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -70,11 +70,15 @@ function Index() {
         },
       }}
     >
-      <Box className="absolute w-full top-0 left-0 z-[-1] opacity-[0.6]" h="100vh">
+      <Box
+        className="absolute w-full top-[-150px] left-0 z-[-1] opacity-[0.6]"
+        h="100vh"
+        scale="1.3"
+      >
         <UnicornScene jsonFilePath="/motion.json" width="100%" height="100%" />
       </Box>
-      <Flex direction="column" w="100%" maxW="1400px" align="center" px="20px">
-        <Flex minH="calc(100vh - 100px)" align="center" id="HOME">
+      <Flex direction="column" w="100%" maxW="1480px" align="center" px="20px">
+        <Flex minH="calc(100vh - 60px)" align="center" id="HOME">
           <Box className="mx-auto" minH={{ base: 'auto', xl: '400px' }} color="#fff">
             <Heading
               fontSize={{ base: '36px', md: '64px' }}
@@ -129,78 +133,7 @@ function Index() {
             </Box>
           </Box>
         </Flex>
-        <Box width="100%" id="ABOUT">
-          <motion.div
-            layout
-            style={{ width: '100%' }}
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
-          >
-            <Box textAlign="left" width="100%" mt="44px">
-              <Title>/ABOUT</Title>
-            </Box>
-          </motion.div>
-
-          <motion.div
-            layout
-            style={{ width: '100%' }}
-            initial={{ y: 150, opacity: 0 }}
-            whileInView={{ opacity: 1, y: 0, transition: { duration: 1 } }}
-          >
-            <Center h="277px" mt="28px">
-              <Icon as={LogoSvg} h="100%" w="100%" />
-            </Center>
-          </motion.div>
-          <Box>
-            <Box textAlign="center" fontFamily="Dotemp" fontSize="32px">
-              <motion.div
-                layout
-                style={{ width: '100%' }}
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ opacity: 1, y: 0, transition: { duration: 1.3 } }}
-              >
-                <Text mt="12px">NOX Venture is a Full-Lifecycle Crypto Incubation Fund.</Text>
-              </motion.div>
-              <motion.div
-                layout
-                style={{ width: '100%' }}
-                initial={{ y: 60, opacity: 0 }}
-                whileInView={{ opacity: 1, y: 0, transition: { duration: 1.8 } }}
-              >
-                <Text mt="12px">We live on the frontier of Web3 and believe in </Text>
-
-                <Text mt="12px">progress through innovation.</Text>
-
-                <Text mt="12px">
-                  We partner with ambitious teams from the earliest stages, acting as
-                </Text>
-                <Text mt="12px">
-                  strategic co-founders to guide projects from idea to exchange listing.
-                </Text>
-                <Box
-                  position="relative"
-                  mt="-105px"
-                  w="100%"
-                  h="100px"
-                  bg="linear-gradient(180deg, rgba(0, 0, 0, 0.5) -32%, rgba(0, 0, 0, 1) 100%);"
-                ></Box>
-              </motion.div>
-              <Flex
-                direction="column"
-                width="fit-content"
-                gap="8px"
-                fontSize="16px"
-                alignItems="center"
-                mx="auto"
-                mt="90px"
-                className="animate-bounce cursor-pointer"
-              >
-                <Icon as={ArrowDownSvg} />
-                Scroll
-              </Flex>
-            </Box>
-          </Box>
-        </Box>
+        <AboutSection />
       </Flex>
 
       <motion.div
@@ -209,7 +142,7 @@ function Index() {
         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
         id="SERVICES"
       >
-        <Flex direction="column" w="100%" maxW="1400px" align="center" mx="auto">
+        <Flex direction="column" w="100%" maxW="1480px" align="center" mx="auto">
           <Box textAlign="left" width="100%" mt="44px">
             <Title>/SERVICES</Title>
           </Box>
@@ -228,7 +161,7 @@ function Index() {
         ))}
       </VStack>
 
-      <Flex direction="column" w="100%" maxW="1400px" align="center" mx="auto" mt="60px">
+      <Flex direction="column" w="100%" maxW="1480px" align="center" mx="auto" mt="60px">
         <motion.div
           style={{ width: '100%', marginTop: '60px' }}
           initial={{ y: 50, opacity: 0 }}
@@ -255,15 +188,21 @@ function Index() {
   )
 }
 const techLogos: LogoItem[] = [
-  { src: '/images/logos/scallop.png', alt: 'scallop', href: 'https://company3.com' },
-  { src: '/images/logos/cetus.png', alt: 'cetus', href: 'https://company1.com' },
-  { src: '/images/logos/metis.png', alt: 'metis', href: 'https://company2.com' },
+  { src: '/images/logos/surge.png', alt: 'metis', href: 'https://surgeai.io' },
+  { src: '/images/logos/scallop.png', alt: 'scallop', href: 'https://scallop.io' },
+  { src: '/images/logos/cetus.png', alt: 'cetus', href: 'https://cetus.zone' },
+  { src: '/images/logos/metis.png', alt: 'metis', href: 'https://metis.io' },
 ]
 
 const services = [
-  <ServiceLines text="VENTURE CAPITAL" icon={LogoSvg} contentW="1400px" />,
-  <ServiceLines text="ADVISORY & STRATEGY" icon={LogoSvg} contentW="1400px" />,
-  <ServiceLines text="MARKETING & COMMUNITY BUILDING" icon={LogoSvg} contentW="1400px" />,
-  <ServiceLines text="CAPITAL MARKETS & TRADING" icon={LogoSvg} contentW="1400px" />,
-  <ServiceLines text="INCUBATION" icon={LogoSvg} contentW="1400px" />,
+  <ServiceLines text="VENTURE CAPITAL" count="001" icon={LogoSvg} contentW="1480px" />,
+  <ServiceLines text="ADVISORY & STRATEGY" count="002" icon={LogoSvg} contentW="1480px" />,
+  <ServiceLines
+    text="MARKETING & COMMUNITY BUILDING"
+    count="003"
+    icon={LogoSvg}
+    contentW="1480px"
+  />,
+  <ServiceLines text="CAPITAL MARKETS & TRADING" count="004" icon={LogoSvg} contentW="1480px" />,
+  <ServiceLines text="INCUBATION" count="005" icon={LogoSvg} contentW="1480px" />,
 ]

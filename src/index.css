@@ -1,18 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: Monopik;
-  src: url(/fonts/Monopik.otf);
-}
-@font-face {
-  font-family: Space Mono;
-  src: url(/fonts/SpaceMono-Regular.ttf);
-}
-
-@font-face {
-  font-family: Dotemp;
-  src: url(/fonts/Dotemp-8bit.ttf);
-}
 body {
   background: #000!important;
   color: #fff;

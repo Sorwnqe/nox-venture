@@ -1,35 +1,46 @@
-import { Box, Center, Flex, Icon } from '@chakra-ui/react'
+import { Center, Flex, Icon, Text } from '@chakra-ui/react'
 import { ReactNode } from '@tanstack/react-router'
 
 const ServiceLines = ({
   text,
   icon,
   contentW,
+  count,
 }: {
   text: ReactNode
   icon: ReactNode
   contentW: string
+  count: string
 }) => {
   return (
     <Center
       position="relative"
       color="#fff"
+      transition="0.4s all ease-in"
       _hover={{
-        transition: '0.6s all ease-in-out',
         bgColor: '#fff',
         color: '#000',
+
+        '.service-count': {
+          opacity: 1,
+        },
       }}
     >
       <Flex
         justify="space-between"
         w={contentW}
-        fontSize="28px"
+        fontSize="32px"
         letterSpacing="2px"
         fontWeight="400"
-        px="10px"
         alignItems="center"
+        fontFamily="Minecraft"
       >
-        <Box py="66px">{text}</Box>
+        <Flex py="46px" gap="20px">
+          <Text className="service-count" opacity="0" transition="0.4s all ease-in">
+            {count}
+          </Text>
+          {text}
+        </Flex>
         <Icon as={icon} width="120px" height="120px" />
       </Flex>
     </Center>

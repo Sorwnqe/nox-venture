@@ -70,6 +70,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach((observer) => observer?.disconnect())
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies)
 }
 
@@ -110,6 +111,7 @@ const useImageLoader = (
         img.removeEventListener('error', handleImageLoad)
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies)
 }
 
@@ -168,7 +170,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null
     }
-  }, [targetVelocity, seqWidth, isHovered, pauseOnHover])
+  }, [targetVelocity, seqWidth, isHovered, pauseOnHover, trackRef])
 }
 
 export const LogoLoop = React.memo<LogoLoopProps>(
@@ -225,10 +227,9 @@ export const LogoLoop = React.memo<LogoLoopProps>(
       () =>
         ({
           '--logoloop-gap': `${gap}px`,
-          '--logoloop-logoHeight': `${logoHeight}px`,
           ...(fadeOutColor && { '--logoloop-fadeColor': fadeOutColor }),
         }) as React.CSSProperties,
-      [gap, logoHeight, fadeOutColor]
+      [gap, fadeOutColor]
     )
 
     const rootClassName = useMemo(
@@ -252,55 +253,58 @@ export const LogoLoop = React.memo<LogoLoopProps>(
       if (pauseOnHover) setIsHovered(false)
     }, [pauseOnHover])
 
-    const renderLogoItem = useCallback((item: LogoItem, key: React.Key) => {
-      const isNodeItem = 'node' in item
+    const renderLogoItem = useCallback(
+      (item: LogoItem, key: React.Key) => {
+        const isNodeItem = 'node' in item
 
-      const content = isNodeItem ? (
-        <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
-          {item.node}
-        </span>
-      ) : (
-        <img
-          src={item.src}
-          srcSet={item.srcSet}
-          sizes={item.sizes}
-          width={item.width}
-          height={item.height}
-          alt={item.alt ?? ''}
-          title={item.title}
-          loading="lazy"
-          decoding="async"
-          draggable={false}
-        />
-      )
+        const content = isNodeItem ? (
+          <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
+            {item.node}
+          </span>
+        ) : (
+          <img
+            src={item.src}
+            srcSet={item.srcSet}
+            sizes={item.sizes}
+            width={item.width}
+            height={item.height}
+            alt={item.alt ?? ''}
+            title={item.title}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+          />
+        )
 
-      const itemAriaLabel = isNodeItem ? item.ariaLabel ?? item.title : item.alt ?? item.title
+        const itemAriaLabel = isNodeItem ? item.ariaLabel ?? item.title : item.alt ?? item.title
 
-      const itemContent = item.href ? (
-        <a
-          className="logoloop__link"
-          href={item.href}
-          aria-label={itemAriaLabel || 'logo link'}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          {content}
-        </a>
-      ) : (
-        content
-      )
+        const itemContent = item.href ? (
+          <a
+            className="logoloop__link"
+            href={item.href}
+            aria-label={itemAriaLabel || 'logo link'}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            {content}
+          </a>
+        ) : (
+          content
+        )
 
-      return (
-        <div
-          className="logoloop__item"
-          style={{ width: boxHeight, height: boxHeight }}
-          key={key}
-          role="listitem"
-        >
-          {itemContent}
-        </div>
-      )
-    }, [])
+        return (
+          <div
+            className="logoloop__item"
+            style={{ width: boxHeight, height: boxHeight }}
+            key={key}
+            role="listitem"
+          >
+            {itemContent}
+          </div>
+        )
+      },
+      [boxHeight]
+    )
 
     const logoLists = useMemo(
       () =>
@@ -316,7 +320,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`))}
           </div>
         )),
-      [copyCount, logos, renderLogoItem]
+      [boxHeight, copyCount, logos, renderLogoItem]
     )
 
     const containerStyle = useMemo(

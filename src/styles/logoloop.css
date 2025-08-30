@@ -2,7 +2,6 @@
   position: relative;
   overflow-x: hidden;
 
-  --logoloop-logoHeight: 80px;
   --logoloop-fadeColorAuto: #0b0b0b;
 }
 
@@ -44,8 +43,8 @@
 }
 
 .logoloop__item img {
-  height: var(--logoloop-logoHeight);
-  width: auto;
+  height: 100%;
+  width: 100%;
   display: block;
   object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
@@ -53,6 +52,7 @@
   pointer-events: none;
   /* Links handle interaction */
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.7);
 }
 
 .logoloop--scale-hover .logoloop__item {
@@ -61,7 +61,7 @@
 
 .logoloop--scale-hover .logoloop__item:hover img,
 .logoloop--scale-hover .logoloop__item:hover .logoloop__node {
-  transform: scale(1.2);
+  transform: scale(0.8);
   transform-origin: center center;
 }
 

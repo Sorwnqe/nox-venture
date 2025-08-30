@@ -1,9 +1,9 @@
-import { Text, TextProps } from '@chakra-ui/react'
+import { Heading, TextProps } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
 const Title = ({ children, ...props }: { children: ReactNode } & TextProps) => {
   return (
-    <Text
+    <Heading
       as={'h3'}
       fontSize={'32px'}
       fontWeight={'400'}
@@ -12,7 +12,7 @@ const Title = ({ children, ...props }: { children: ReactNode } & TextProps) => {
       {...props}
     >
       {children}
-    </Text>
+    </Heading>
   )
 }
 export default Title

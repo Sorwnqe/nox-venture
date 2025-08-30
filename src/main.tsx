@@ -36,7 +36,8 @@ if (rootElement) {
             },
             fonts: {
               heading: `Monopik, Inter, sans-serif`,
-              body: `Monopik, Inter, sans-serif`,
+              body: `Space Mono, Inter, sans-serif`,
+              Title: `Monopik, Inter, sans-serif`,
             },
             styles: {
               global: () => ({

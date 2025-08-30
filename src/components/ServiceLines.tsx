@@ -25,23 +25,32 @@ const ServiceLines = ({
           opacity: 1,
         },
       }}
+      px={{ base: '20px', md: '0px' }}
     >
       <Flex
         justify="space-between"
         w={contentW}
-        fontSize="32px"
+        fontSize={{ base: '22px', md: '32px' }}
         letterSpacing="2px"
         fontWeight="400"
         alignItems="center"
         fontFamily="Minecraft"
       >
-        <Flex py="46px" gap="20px">
+        <Flex
+          py={{ base: '26px', md: '46px' }}
+          gap={{ base: '20px', md: '20px' }}
+          alignItems="center"
+        >
           <Text className="service-count" opacity="0" transition="0.4s all ease-in">
             {count}
           </Text>
           {text}
         </Flex>
-        <Icon as={icon} width="120px" height="120px" />
+        <Icon
+          as={icon}
+          width={{ base: '80px', md: '120px' }}
+          height={{ base: '80px', md: '120px' }}
+        />
       </Flex>
     </Center>
   )

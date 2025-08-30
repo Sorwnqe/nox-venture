@@ -24,6 +24,7 @@ import { jumpAnchor } from '../utils'
 import { socials } from '../env'
 import { LogoTextSvg } from './icons/logo-text.svg'
 import EmailService from '../utils/sendEmail'
+import useIsMobile from '../hooks/useIsMobile'
 
 const Item = ({ children, ...props }: MenuItemProps) => {
   return (
@@ -59,6 +60,7 @@ const Item = ({ children, ...props }: MenuItemProps) => {
 
 export const NavigationBar: FC = () => {
   const toaster = useToast()
+  const isMobile = useIsMobile()
   const [showCursor, setShowCursor] = useState<boolean>()
   const [isOpen, setIsOpen] = useState<boolean>()
   const { history } = useRouter()
@@ -102,76 +104,146 @@ export const NavigationBar: FC = () => {
   }
 
   return (
-    <Center
-      as="nav"
-      className={router === '/' ? '' : 'black'}
-      w="100%"
-      onMouseEnter={() => setShowCursor(true)}
-      onMouseLeave={() => setShowCursor(false)}
-    >
-      {showCursor && <TargetCursor spinDuration={0} hideDefaultCursor={false} />}
-      <Flex justify="space-between" w="100%" maxW="1280px" px="20px" align="center" h="60px">
-        <Menu
-          onOpen={() => {
-            setShowCursor(true)
-            setIsOpen(true)
-          }}
-          onClose={() => {
-            setShowCursor(false)
-            setIsOpen(false)
-          }}
-        >
-          <MenuButton className="cursor-target">
-            <BridgeText text="MENU" />
-          </MenuButton>
-          <MenuList bg="rgba(20, 20, 20, 0.5)" backdropFilter="blur(24px)" p="20px 8px" w="320px">
-            <BgWithIcon>
-              <Item onClick={() => jumpAnchor('ABOUT')}>
-                <ScrambledText>
-                  <BridgeText text="ABOUT US" />
-                </ScrambledText>
-              </Item>
-              <Item onClick={() => jumpAnchor('SERVICES')}>
-                <ScrambledText>
-                  <BridgeText text="SERVICES" />
-                </ScrambledText>
-              </Item>
-              <Item onClick={() => jumpAnchor('PORTFOLIO')}>
-                <ScrambledText>
-                  <BridgeText text="PORTFOLIO" />
-                </ScrambledText>
-              </Item>
-              <Item onClick={() => jumpAnchor('CONTACT')}>
-                <ScrambledText>
-                  <BridgeText text="CONTACT" />
-                </ScrambledText>
-              </Item>
-              <Box
-                as="a"
-                bg="none"
-                p={0}
-                color="#999999"
-                cursor="pointer"
-                href={socials.twitter}
-                _hover={{
-                  color: '#fff',
-                  '.x-icon': {
-                    transition: '0.4s transform ease-in-out',
-                    transform: 'scale(1.2)',
-                  },
-                }}
-              >
-                <Icon
-                  as={TwitterIconSvg}
-                  w="16.5px"
-                  h="16.5px"
-                  mt="15px"
-                  mb="20px"
-                  ml="22px"
-                  className="x-icon"
+    <>
+      <Center
+        as="nav"
+        className={router === '/' ? '' : 'black'}
+        w="100%"
+        onMouseEnter={() => setShowCursor(true)}
+        onMouseLeave={() => setShowCursor(false)}
+      >
+        <Flex justify="space-between" w="100%" maxW="1280px" px="20px" align="center" h="60px">
+          <Menu
+            onOpen={() => {
+              setShowCursor(true)
+              setIsOpen(true)
+            }}
+            onClose={() => {
+              setShowCursor(false)
+              setIsOpen(false)
+            }}
+          >
+            <MenuButton className="cursor-target">
+              <BridgeText text="MENU" />
+            </MenuButton>
+            <MenuList
+              bg="rgba(20, 20, 20, 0.5)"
+              backdropFilter="blur(24px)"
+              p="20px 8px"
+              w="320px"
+              zIndex="9999"
+            >
+              <BgWithIcon>
+                <Item onClick={() => jumpAnchor('ABOUT')}>
+                  <ScrambledText>
+                    <BridgeText text="ABOUT US" />
+                  </ScrambledText>
+                </Item>
+                <Item onClick={() => jumpAnchor('SERVICES')}>
+                  <ScrambledText>
+                    <BridgeText text="SERVICES" />
+                  </ScrambledText>
+                </Item>
+                <Item onClick={() => jumpAnchor('PORTFOLIO')}>
+                  <ScrambledText>
+                    <BridgeText text="PORTFOLIO" />
+                  </ScrambledText>
+                </Item>
+                <Item onClick={() => jumpAnchor('CONTACT')}>
+                  <ScrambledText>
+                    <BridgeText text="CONTACT" />
+                  </ScrambledText>
+                </Item>
+                <Box
+                  as="a"
+                  bg="none"
+                  p={0}
+                  color="#999999"
+                  cursor="pointer"
+                  href={socials.twitter}
+                  _hover={{
+                    color: '#fff',
+                    '.x-icon': {
+                      transition: '0.4s transform ease-in-out',
+                      transform: 'scale(1.2)',
+                    },
+                  }}
+                >
+                  <Icon
+                    as={TwitterIconSvg}
+                    w="16.5px"
+                    h="16.5px"
+                    mt="15px"
+                    mb="20px"
+                    ml="22px"
+                    className="x-icon"
+                  />
+                </Box>
+                <Box h="123px" mb="10px" bg="#000">
+                  {isOpen && (
+                    <video
+                      src="/menu.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    ></video>
+                  )}
+                </Box>
+              </BgWithIcon>
+            </MenuList>
+          </Menu>
+          <Box as={Link} to="/">
+            <Icon as={LogoTextSvg} w="155px" h="60px" />
+          </Box>
+
+          <Menu
+            onOpen={() => {
+              setShowCursor(false)
+              setIsOpen(true)
+            }}
+            onClose={() => {
+              setShowCursor(false)
+              setIsOpen(false)
+            }}
+          >
+            <MenuButton className="cursor-target">
+              <BridgeText text="CONTACT US" />
+            </MenuButton>
+            <MenuList
+              bg="rgba(20, 20, 20, 0.5)"
+              backdropFilter="blur(24px)"
+              p="20px 8px"
+              w="320px"
+              fontFamily="Space Mono"
+              onMouseEnter={() => setShowCursor(false)}
+              zIndex="9999"
+            >
+              <Box bg="unset" px="8px" py="6px">
+                <Input
+                  placeholder="Your name"
+                  onChange={(e) => handleInputChange('name', e.target.value)}
                 />
               </Box>
-              <Box h="123px" mb="10px" bg="#000">
+              <Box bg="unset" px="8px" py="6px">
+                <Input
+                  placeholder="Your email"
+                  onChange={(e) => handleInputChange('email', e.target.value)}
+                />
+              </Box>
+              <Box bg="unset" px="8px" py="6px">
+                <Input
+                  placeholder="More info"
+                  onChange={(e) => handleInputChange('info', e.target.value)}
+                />
+              </Box>
+              <Box bg="unset" px="8px" py="6px" mt="8px">
+                <Button bg="#000" w="100%" onClick={handleSubmit}>
+                  Submit
+                </Button>
+              </Box>
+              <Box mt="12px" h="123px" mb="10px" mx="8px" bg="#000">
                 {isOpen && (
                   <video
                     src="/menu.mp4"
@@ -183,72 +255,11 @@ export const NavigationBar: FC = () => {
                   ></video>
                 )}
               </Box>
-            </BgWithIcon>
-          </MenuList>
-        </Menu>
-        <Box as={Link} to="/">
-          <Icon as={LogoTextSvg} w="155px" h="60px" />
-        </Box>
-
-        <Menu
-          onOpen={() => {
-            setShowCursor(false)
-            setIsOpen(true)
-          }}
-          onClose={() => {
-            setShowCursor(false)
-            setIsOpen(false)
-          }}
-        >
-          <MenuButton className="cursor-target">
-            <BridgeText text="CONTACT US" />
-          </MenuButton>
-          <MenuList
-            bg="rgba(20, 20, 20, 0.5)"
-            backdropFilter="blur(24px)"
-            p="20px 8px"
-            w="320px"
-            fontFamily="Space Mono"
-            onMouseEnter={() => setShowCursor(false)}
-          >
-            <Box bg="unset" px="8px" py="6px">
-              <Input
-                placeholder="Your name"
-                onChange={(e) => handleInputChange('name', e.target.value)}
-              />
-            </Box>
-            <Box bg="unset" px="8px" py="6px">
-              <Input
-                placeholder="Your email"
-                onChange={(e) => handleInputChange('email', e.target.value)}
-              />
-            </Box>
-            <Box bg="unset" px="8px" py="6px">
-              <Input
-                placeholder="More info"
-                onChange={(e) => handleInputChange('info', e.target.value)}
-              />
-            </Box>
-            <Box bg="unset" px="8px" py="6px" mt="8px">
-              <Button bg="#000" w="100%" onClick={handleSubmit}>
-                Submit
-              </Button>
-            </Box>
-            <Box mt="12px" h="123px" mb="10px" mx="8px" bg="#000">
-              {isOpen && (
-                <video
-                  src="/menu.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                ></video>
-              )}
-            </Box>
-          </MenuList>
-        </Menu>
-      </Flex>
-    </Center>
+            </MenuList>
+          </Menu>
+        </Flex>
+      </Center>
+      {showCursor && !isMobile && <TargetCursor spinDuration={0} hideDefaultCursor={false} />}
+    </>
   )
 }

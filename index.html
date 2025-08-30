@@ -57,6 +57,11 @@
       font-size: 40px;
       font-family: Monopik;
     }
+    @media (max-width: 768px) {
+      #progress-text {
+        font-size: 18px;
+      }
+    }
   </style>
   <body>
     <div id="loading-wrapper">
@@ -130,7 +135,7 @@
       document.getElementById('progress-text').textContent = `Loading_100%`;
       setTimeout(() => {
         document.getElementById('loading-wrapper').style.display = 'none';
-      }, 300);
+      }, 50);
     });
   </script>
 </html>

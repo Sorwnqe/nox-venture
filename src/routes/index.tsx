@@ -10,6 +10,7 @@ import ServiceLines from '../components/ServiceLines'
 import LogoLoop, { LogoItem } from '../components/LogoLoop'
 import { LogoSvg } from '../components/icons/logo.svg'
 import { AboutSection } from '../components/About'
+import useIsMobile from '../hooks/useIsMobile'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -57,11 +58,12 @@ const GraduallyEnteringText: FC<{ text: string; delay?: number }> = ({ text, del
 }
 
 function Index() {
+  const isMobile = useIsMobile()
   return (
     <Center
       w="100%"
       flexDirection="column"
-      mb="120px"
+      mb={{ base: '0', md: '120px' }}
       sx={{
         '.center': {
           display: 'flex',
@@ -71,14 +73,15 @@ function Index() {
       }}
     >
       <Box
-        className="absolute w-full top-[-150px] left-0 z-[-1] opacity-[0.6]"
-        h="100vh"
-        scale="1.3"
+        className="absolute w-full left-0 z-[-1] opacity-[0.6]"
+        h={{ base: '50vh', md: '100vh' }}
+        top={{ base: '0', md: '-0' }}
+        transform={{ base: 'translateY(60px)', md: 'translateY(-60px)' }}
       >
         <UnicornScene jsonFilePath="/motion.json" width="100%" height="100%" />
       </Box>
       <Flex direction="column" w="100%" maxW="1480px" align="center" px="20px">
-        <Flex minH="calc(100vh - 60px)" align="center" id="HOME">
+        <Flex minH={{ base: '750px', md: 'calc(100vh - 60px)' }} align="center" id="HOME">
           <Box className="mx-auto" minH={{ base: 'auto', xl: '400px' }} color="#fff">
             <Heading
               fontSize={{ base: '36px', md: '64px' }}
@@ -137,23 +140,31 @@ function Index() {
       </Flex>
 
       <motion.div
-        style={{ width: '100%', marginTop: '60px' }}
+        style={{ width: '100%' }}
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
         id="SERVICES"
       >
-        <Flex direction="column" w="100%" maxW="1480px" align="center" mx="auto">
-          <Box textAlign="left" width="100%" mt="44px">
+        <Flex
+          direction="column"
+          mt={{ base: '30px', md: '60px' }}
+          w="100%"
+          maxW="1480px"
+          align="center"
+          mx="auto"
+          px="20px"
+        >
+          <Box textAlign="left" width="100%" mt={{ base: '30px', md: '44px' }}>
             <Title>/SERVICES</Title>
           </Box>
         </Flex>
       </motion.div>
-      <VStack spacing={4} align="stretch" mt="50px" w="100%">
+      <VStack spacing={4} align="stretch" mt={{ base: '40px', md: '50px' }} w="100%">
         {services.map((service, i) => (
           <motion.div
             key={i}
             style={{ width: '100%' }}
-            initial={{ y: 100 + i * 30, opacity: 0 }}
+            initial={{ y: 50 + i * 30, opacity: 0 }}
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 + i * 0.5 } }}
           >
             {service}
@@ -161,22 +172,28 @@ function Index() {
         ))}
       </VStack>
 
-      <Flex direction="column" w="100%" maxW="1480px" align="center" mx="auto" mt="60px">
+      <Flex
+        direction="column"
+        w="100%"
+        maxW="1480px"
+        align="center"
+        mx="auto"
+        mt={{ base: '30px', md: '60px' }}
+      >
         <motion.div
           style={{ width: '100%', marginTop: '60px' }}
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
           id="PORTFOLIO"
         >
-          <Box textAlign="left" width="100%" mt="44px">
+          <Box textAlign="left" width="100%" mt={{ base: '34px', md: '44px' }} px="20px">
             <Title>/PORTFOLIO</Title>
           </Box>
-          <Box mt={'114px'} width="100%" h="300px">
+          <Box mt={{ base: '64px', md: '114px' }} width="100%" h={{ base: '200px', md: '300px' }}>
             <LogoLoop
               logos={techLogos}
               speed={50}
-              boxHeight={300}
-              logoHeight={80}
+              boxHeight={isMobile ? 200 : 300}
               pauseOnHover
               scaleOnHover
               fadeOut

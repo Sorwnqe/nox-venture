@@ -3,38 +3,65 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { ArrowDownSvg } from '../icons/arrow-down'
 import Title from '../Title'
+import useIsMobile from '../../hooks/useIsMobile'
 
 export const AboutSection = () => {
+  const isMobile = useIsMobile()
   const [currentKeyframe, setCurrentKeyframe] = useState(0)
   const [scrolling, setScrolling] = useState(true)
 
   // 四段文字内容
-  const textSegments = [
-    {
-      lines: [
-        'NOX Venture is a Full-Lifecycle Crypto Incubation Fund.',
-        'We live on the frontier of Web3 and believe in progress through innovation.',
-      ],
-    },
-    {
-      lines: [
-        'We partner with ambitious teams from the earliest stages, acting as',
-        'strategic co-founders to guide projects from idea to exchange listing.',
-      ],
-    },
-    {
-      lines: [
-        'Our comprehensive support covers technology, strategy, funding,',
-        "and market access to ensure your project's success.",
-      ],
-    },
-    {
-      lines: [
-        "If you're building something ambitious at the frontier of Web3,",
-        'come build with us.',
-      ],
-    },
-  ]
+  const textSegments = isMobile
+    ? [
+        {
+          lines: ['NOX Venture is a Full-Lifecycle Crypto Incubation Fund.'],
+        },
+
+        {
+          lines: ['We live on the frontier of Web3 and believe in progress through innovation.'],
+        },
+        {
+          lines: ['We partner with ambitious teams from the earliest stages, acting as'],
+        },
+        {
+          lines: ['strategic co-founders to guide projects from idea to exchange listing.'],
+        },
+        {
+          lines: ["and market access to ensure your project's success."],
+        },
+        {
+          lines: ["If you're building something ambitious at the frontier of Web3,"],
+        },
+        {
+          lines: ['come build with us.'],
+        },
+      ]
+    : [
+        {
+          lines: [
+            'NOX Venture is a Full-Lifecycle Crypto Incubation Fund.',
+            'We live on the frontier of Web3 and believe in progress through innovation.',
+          ],
+        },
+        {
+          lines: [
+            'We partner with ambitious teams from the earliest stages, acting as',
+            'strategic co-founders to guide projects from idea to exchange listing.',
+          ],
+        },
+        {
+          lines: [
+            'Our comprehensive support covers technology, strategy, funding,',
+            "and market access to ensure your project's success.",
+          ],
+        },
+        {
+          lines: [
+            "If you're building something ambitious at the frontier of Web3,",
+            'come build with us.',
+          ],
+        },
+      ]
 
   // 自动滚动逻辑
   useEffect(() => {
@@ -48,14 +75,21 @@ export const AboutSection = () => {
   }, [scrolling, textSegments.length])
 
   return (
-    <Box width="100%" id="ABOUT" bg="black" color="white" minH="100vh" py="60px">
+    <Box
+      width="100%"
+      id="ABOUT"
+      bg="black"
+      color="white"
+      minH={{ base: '800px', md: '100vh' }}
+      py={{ base: '20px', md: '60px' }}
+    >
       <motion.div
         layout
         style={{ width: '100%' }}
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
       >
-        <Box textAlign="left" width="100%" mt="44px" px="60px">
+        <Box textAlign="left" width="100%" mt="44px">
           <Title>/ABOUT</Title>
         </Box>
       </motion.div>
@@ -66,9 +100,8 @@ export const AboutSection = () => {
         initial={{ y: 120, opacity: 0 }}
         whileInView={{ opacity: 1, y: 0, transition: { duration: 1 } }}
       >
-        <Center h="400px" mt="60px">
-          {/* 3D 方块 Logo 模拟 */}
-          <Box position="relative" w="auto" h="250px" opacity="0.7">
+        <Center h={{ base: '200px', md: '300px' }} my={{ base: '20px', md: '60px' }}>
+          <Box position="relative" w="auto" h="100%" opacity="0.7">
             <video
               src="/about-t.mp4"
               autoPlay
@@ -81,7 +114,12 @@ export const AboutSection = () => {
       </motion.div>
 
       <Box>
-        <Box textAlign="left" fontSize="24px" lineHeight="1.6" px="20px" fontFamily="Dotemp">
+        <Box
+          textAlign="left"
+          fontSize={{ base: '20px', md: '24px' }}
+          lineHeight="1.6"
+          fontFamily="Dotemp"
+        >
           <motion.div
             layout
             style={{ width: '100%' }}
@@ -90,7 +128,7 @@ export const AboutSection = () => {
           >
             {/* 滚动文本容器 - 显示2行高亮 */}
             <Box
-              h="300px" // 2行的高度 (60px * 2)
+              h={{ base: '300px', md: '300px' }} // 2行的高度 (60px * 2)
               overflow="hidden"
               position="relative"
               mx="auto"
@@ -126,7 +164,7 @@ export const AboutSection = () => {
                 top="0"
                 left="0"
                 right="0"
-                h="120px"
+                h={{ base: '200px', md: '120px' }}
                 bg="rgba(255, 255, 255, 0.02)"
                 zIndex="1"
                 pointerEvents="none"
@@ -136,19 +174,19 @@ export const AboutSection = () => {
               <Box
                 position="relative"
                 transition="transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-                transform={`translateY(${-currentKeyframe * 120}px)`}
+                transform={`translateY(${-currentKeyframe * (isMobile ? 200 : 120)}px)`}
                 zIndex="2"
                 fontFamily="Space Mono"
               >
                 {textSegments.map((segment, segmentIndex) => (
-                  <Box key={segmentIndex} h="120px" py="0">
+                  <Box key={segmentIndex} h={{ base: '200px', md: '120px' }} py="0">
                     {segment.lines.map((line, lineIndex) => (
                       <Text
                         key={`${segmentIndex}-${lineIndex}`}
                         h="60px"
                         lineHeight="60px"
                         mb="0"
-                        fontSize="24px"
+                        fontSize={{ base: '20px', md: '24px' }}
                         fontWeight="300"
                         color="white"
                         opacity={segmentIndex === currentKeyframe ? 1 : 0.4}
@@ -172,7 +210,7 @@ export const AboutSection = () => {
             fontSize="16px"
             alignItems="center"
             mx="auto"
-            mt="120px"
+            mt={{ base: '30px', md: '120px' }}
             userSelect="none"
             className={scrolling ? 'animate-bounce cursor-pointer' : 'cursor-pointer'}
             onClick={() => setScrolling(!scrolling)}

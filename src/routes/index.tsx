@@ -8,7 +8,6 @@ import CountUpText from '../components/CountUpText'
 import Title from '../components/Title'
 import ServiceLines from '../components/ServiceLines'
 import LogoLoop, { LogoItem } from '../components/LogoLoop'
-import { LogoSvg } from '../components/icons/logo.svg'
 import { AboutSection } from '../components/About'
 import useIsMobile from '../hooks/useIsMobile'
 
@@ -212,14 +211,9 @@ const techLogos: LogoItem[] = [
 ]
 
 const services = [
-  <ServiceLines text="VENTURE CAPITAL" count="001" icon={LogoSvg} contentW="1480px" />,
-  <ServiceLines text="ADVISORY & STRATEGY" count="002" icon={LogoSvg} contentW="1480px" />,
-  <ServiceLines
-    text="MARKETING & COMMUNITY BUILDING"
-    count="003"
-    icon={LogoSvg}
-    contentW="1480px"
-  />,
-  <ServiceLines text="CAPITAL MARKETS & TRADING" count="004" icon={LogoSvg} contentW="1480px" />,
-  <ServiceLines text="INCUBATION" count="005" icon={LogoSvg} contentW="1480px" />,
+  <ServiceLines text="VENTURE CAPITAL" count="001" contentW="1480px" />,
+  <ServiceLines text="ADVISORY & STRATEGY" count="002" contentW="1480px" />,
+  <ServiceLines text="MARKETING & COMMUNITY BUILDING" count="003" contentW="1480px" />,
+  <ServiceLines text="CAPITAL MARKETS & TRADING" count="004" contentW="1480px" />,
+  <ServiceLines text="INCUBATION" count="005" contentW="1480px" />,
 ]

@@ -1,14 +1,12 @@
-import { Center, Flex, Icon, Text } from '@chakra-ui/react'
+import { Center, Flex, Image, Text } from '@chakra-ui/react'
 import { ReactNode } from '@tanstack/react-router'
 
 const ServiceLines = ({
   text,
-  icon,
   contentW,
   count,
 }: {
   text: ReactNode
-  icon: ReactNode
   contentW: string
   count: string
 }) => {
@@ -22,6 +20,9 @@ const ServiceLines = ({
         color: '#000',
 
         '.service-count': {
+          opacity: 1,
+        },
+        '.service-img': {
           opacity: 1,
         },
       }}
@@ -46,8 +47,11 @@ const ServiceLines = ({
           </Text>
           {text}
         </Flex>
-        <Icon
-          as={icon}
+        <Image
+          className="service-img"
+          opacity="0"
+          transition="0.4s all ease-in"
+          src={'/images/f717106600ffa7ab86f950537c9b466.png'}
           width={{ base: '80px', md: '120px' }}
           height={{ base: '80px', md: '120px' }}
         />

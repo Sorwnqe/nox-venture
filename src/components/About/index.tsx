@@ -175,9 +175,14 @@ export const AboutSection = () => {
         >
           <motion.div
             layout
-            style={{ width: '100%' }}
+            style={{
+              width: '100%',
+              touchAction: 'none', // 禁用默认触摸行为
+              overscrollBehavior: 'contain', // 防止滚动传播到父元素
+            }}
             initial={{ y: 150, opacity: 0 }}
             whileInView={{ opacity: 1, y: 0, transition: { duration: 1.3 } }}
+            ref={containerRef}
           >
             {/* 滚动文本容器 - 显示2行高亮 */}
             <Box
@@ -230,11 +235,6 @@ export const AboutSection = () => {
                 transform={`translateY(${-currentKeyframe * (isMobile ? 200 : 120)}px)`}
                 zIndex="2"
                 fontFamily="Space Mono"
-                ref={containerRef}
-                style={{
-                  touchAction: 'none', // 禁用默认触摸行为
-                  overscrollBehavior: 'contain', // 防止滚动传播到父元素
-                }}
               >
                 {textSegments.map((segment, segmentIndex) => (
                   <Box key={segmentIndex} h={{ base: '200px', md: '120px' }} py="0">

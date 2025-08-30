@@ -26,7 +26,6 @@ const ServiceLines = ({
           opacity: 1,
         },
       }}
-      px={{ base: '20px', md: '20px' }}
     >
       <Flex
         justify="space-between"
@@ -36,6 +35,7 @@ const ServiceLines = ({
         fontWeight="400"
         alignItems="center"
         fontFamily="Minecraft"
+        px={{ base: '20px', md: '20px' }}
       >
         <Flex
           py={{ base: '26px', md: '46px' }}

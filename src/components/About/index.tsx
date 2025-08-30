@@ -27,10 +27,13 @@ export const AboutSection = () => {
           lines: ['strategic co-founders to guide projects from idea to exchange listing.'],
         },
         {
+          lines: ['Our comprehensive support covers technology, strategy, funding,'],
+        },
+        {
           lines: ["and market access to ensure your project's success."],
         },
         {
-          lines: ["If you're building something ambitious at the frontier of Web3,"],
+          lines: ['If you’re building something ambitious at the frontier of Web3,'],
         },
         {
           lines: ['come build with us.'],

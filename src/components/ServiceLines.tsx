@@ -26,7 +26,7 @@ const ServiceLines = ({
           opacity: 1,
         },
       }}
-      px={{ base: '20px', md: '0px' }}
+      px={{ base: '20px', md: '20px' }}
     >
       <Flex
         justify="space-between"

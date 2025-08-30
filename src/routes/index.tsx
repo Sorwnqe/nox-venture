@@ -142,9 +142,9 @@ function Index() {
         style={{ width: '100%' }}
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
-        id="SERVICES"
       >
         <Flex
+          id="SERVICES"
           direction="column"
           mt={{ base: '30px', md: '60px' }}
           w="100%"

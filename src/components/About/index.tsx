@@ -1,6 +1,6 @@
 import { Box, Center, Text, Flex, Icon } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ArrowDownSvg } from '../icons/arrow-down'
 import Title from '../Title'
 import useIsMobile from '../../hooks/useIsMobile'
@@ -8,7 +8,7 @@ import useIsMobile from '../../hooks/useIsMobile'
 export const AboutSection = () => {
   const isMobile = useIsMobile()
   const [currentKeyframe, setCurrentKeyframe] = useState(0)
-  const [scrolling, setScrolling] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   // 四段文字内容
   const textSegments = isMobile
@@ -16,7 +16,6 @@ export const AboutSection = () => {
         {
           lines: ['NOX Venture is a Full-Lifecycle Crypto Incubation Fund.'],
         },
-
         {
           lines: ['We live on the frontier of Web3 and believe in progress through innovation.'],
         },
@@ -33,7 +32,7 @@ export const AboutSection = () => {
           lines: ["and market access to ensure your project's success."],
         },
         {
-          lines: ['If you’re building something ambitious at the frontier of Web3,'],
+          lines: [`If you're building something ambitious at the frontier of Web3,`],
         },
         {
           lines: ['come build with us.'],
@@ -66,16 +65,67 @@ export const AboutSection = () => {
         },
       ]
 
-  // 自动滚动逻辑
+  let touchStartY = 0
+
+  const handleNextLine = () => {
+    setCurrentKeyframe((prev) =>
+      prev === textSegments.length ? textSegments.length : (prev + 1) % textSegments.length
+    )
+  }
+
+  const handlePreLine = () => {
+    setCurrentKeyframe((prev) => (prev === 0 ? 0 : (prev - 1) % textSegments.length))
+  }
+
+  // 添加原生事件监听器到容器
   useEffect(() => {
-    if (!scrolling) return
+    const container = containerRef.current
+    if (!container) return
 
-    const interval = setInterval(() => {
-      setCurrentKeyframe((prev) => (prev + 1) % textSegments.length)
-    }, 3000) // 每3秒切换一个关键帧
+    const handleWheelNative = (e: WheelEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      e.stopImmediatePropagation()
 
-    return () => clearInterval(interval)
-  }, [scrolling, textSegments.length])
+      console.log('Native wheel event:', e)
+
+      if (e.deltaY > 0) {
+        handleNextLine()
+      } else if (e.deltaY < 0) {
+        handlePreLine()
+      }
+    }
+
+    const handleTouchStartNative = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY
+    }
+
+    const handleTouchEndNative = (e: TouchEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+
+      const touchEndY = e.changedTouches[0].clientY
+      const deltaY = touchStartY - touchEndY
+
+      if (deltaY > 30) {
+        handleNextLine()
+      } else if (deltaY < -30) {
+        handlePreLine()
+      }
+    }
+
+    // 添加事件监听器，设置 passive: false 以允许 preventDefault
+    container.addEventListener('wheel', handleWheelNative, { passive: false })
+    container.addEventListener('touchstart', handleTouchStartNative, { passive: true })
+    container.addEventListener('touchend', handleTouchEndNative, { passive: false })
+
+    // 清理函数
+    return () => {
+      container.removeEventListener('wheel', handleWheelNative)
+      container.removeEventListener('touchstart', handleTouchStartNative)
+      container.removeEventListener('touchend', handleTouchEndNative)
+    }
+  }, [currentKeyframe, textSegments.length]) // 依赖数组包含相关状态
 
   return (
     <Box
@@ -180,6 +230,11 @@ export const AboutSection = () => {
                 transform={`translateY(${-currentKeyframe * (isMobile ? 200 : 120)}px)`}
                 zIndex="2"
                 fontFamily="Space Mono"
+                ref={containerRef}
+                style={{
+                  touchAction: 'none', // 禁用默认触摸行为
+                  overscrollBehavior: 'contain', // 防止滚动传播到父元素
+                }}
               >
                 {textSegments.map((segment, segmentIndex) => (
                   <Box key={segmentIndex} h={{ base: '200px', md: '120px' }} py="0">
@@ -213,10 +268,9 @@ export const AboutSection = () => {
             fontSize="16px"
             alignItems="center"
             mx="auto"
-            mt={{ base: '30px', md: '120px' }}
+            mt={{ base: '30px', md: '40px' }}
             userSelect="none"
-            className={scrolling ? 'animate-bounce cursor-pointer' : 'cursor-pointer'}
-            onClick={() => setScrolling(!scrolling)}
+            className="animate-bounce cursor-pointer"
           >
             {/* 向下箭头图标 */}
             <Icon as={ArrowDownSvg} />

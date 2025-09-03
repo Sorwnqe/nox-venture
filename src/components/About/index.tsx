@@ -3,8 +3,11 @@ import { motion } from 'framer-motion'
 import { ArrowDownSvg } from '../icons/arrow-down'
 import Title from '../Title'
 import TextType from '../TextType'
+import { useState } from 'react'
 
 export const AboutSection = () => {
+  const [texType, setTextType] = useState<boolean>()
+
   const textSegments: Array<string> = [
     'NOX Ventures is a Full-Lifecycle Crypto Incubation Fund.',
     'We live on the frontier of Web3 and believe in progress through innovation.',
@@ -16,6 +19,7 @@ export const AboutSection = () => {
     'come build with us.',
   ]
   const getRandom = (len: number) => Math.floor(Math.random() * len) + 1
+  console.log(texType)
 
   return (
     <Box
@@ -68,21 +72,25 @@ export const AboutSection = () => {
               layout
               style={{
                 width: '100%',
+                minHeight: '300px',
               }}
               initial={{ y: 150, opacity: 0 }}
               whileInView={{ opacity: 1, y: 0, transition: { duration: 1.3 } }}
+              onViewportEnter={() => setTextType(true)}
+              onViewportLeave={() => setTextType(false)}
             >
-              {textSegments.map((segment, segmentIndex) => (
-                <Box key={segmentIndex} mb={{ base: '12px', md: '0px' }}>
-                  <TextType
-                    textColors={['#c5c5c5']}
-                    key={`${segmentIndex}`}
-                    text={segment}
-                    initialDelay={1500 + 300 * getRandom(textSegments.length)}
-                    showCursor={false}
-                  ></TextType>
-                </Box>
-              ))}
+              {texType &&
+                textSegments.map((segment, segmentIndex) => (
+                  <Box key={segmentIndex} mb={{ base: '12px', md: '0px' }}>
+                    <TextType
+                      textColors={['#c5c5c5']}
+                      key={`${segmentIndex}`}
+                      text={segment}
+                      initialDelay={300 + 300 * getRandom(textSegments.length)}
+                      showCursor={false}
+                    ></TextType>
+                  </Box>
+                ))}
             </motion.div>
           }
 

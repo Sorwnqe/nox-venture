@@ -15,7 +15,7 @@ export const Route = createRootRoute({
           top={{ base: '0', md: '-0' }}
           transform={{ base: 'translateY(60%)', md: 'unset' }}
         >
-          <UnicornScene jsonFilePath="/motion.json" width="100%" height="100%" dpi={2} />
+          <UnicornScene jsonFilePath="/motion.json" width="100%" height="100%" />
         </Box>
         <NavigationBar />
         <Outlet />

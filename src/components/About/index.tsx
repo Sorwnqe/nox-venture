@@ -2,8 +2,8 @@ import { Box, Center, Text, Flex, Icon } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { ArrowDownSvg } from '../icons/arrow-down'
 import Title from '../Title'
-import TextType from '../TextType'
 import { useState } from 'react'
+import TextTypeMulti from '../TextTypeMulti'
 
 export const AboutSection = () => {
   const [texType, setTextType] = useState<boolean>()
@@ -18,7 +18,6 @@ export const AboutSection = () => {
     `If you're building something ambitious at the frontier of Web3,`,
     'come build with us.',
   ]
-  const getRandom = (len: number) => Math.floor(Math.random() * len) + 1
 
   return (
     <Box
@@ -78,18 +77,16 @@ export const AboutSection = () => {
               onViewportEnter={() => setTextType(true)}
               onViewportLeave={() => setTextType(false)}
             >
-              {texType &&
-                textSegments.map((segment, segmentIndex) => (
-                  <Box key={segmentIndex} mb={{ base: '12px', md: '0px' }}>
-                    <TextType
-                      textColors={['#c5c5c5']}
-                      key={`${segmentIndex}`}
-                      text={segment}
-                      initialDelay={300 * getRandom(4)}
-                      showCursor={false}
-                    ></TextType>
-                  </Box>
-                ))}
+              {texType && (
+                <Box mb={{ base: '12px', md: '0px' }}>
+                  <TextTypeMulti
+                    lines={textSegments}
+                    fromColor="#333"
+                    toColor="#fff"
+                    typingSpeed={2}
+                  />
+                </Box>
+              )}
             </motion.div>
           }
 

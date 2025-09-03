@@ -19,7 +19,6 @@ export const AboutSection = () => {
     'come build with us.',
   ]
   const getRandom = (len: number) => Math.floor(Math.random() * len) + 1
-  console.log(texType)
 
   return (
     <Box

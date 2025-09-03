@@ -85,7 +85,7 @@ export const AboutSection = () => {
                       textColors={['#c5c5c5']}
                       key={`${segmentIndex}`}
                       text={segment}
-                      initialDelay={300 + 300 * getRandom(textSegments.length)}
+                      initialDelay={300 * getRandom(4)}
                       showCursor={false}
                     ></TextType>
                   </Box>

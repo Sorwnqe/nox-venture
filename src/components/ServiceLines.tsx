@@ -35,7 +35,7 @@ const ServiceLines = ({
         fontWeight="400"
         alignItems="center"
         fontFamily="Minecraft"
-        px={{ base: '20px', md: '20px' }}
+        px={{ base: '40px', md: '120px' }}
       >
         <Flex
           py={{ base: '26px', md: '46px' }}

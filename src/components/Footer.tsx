@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Center, Flex, Link, Icon, Box } from '@chakra-ui/react'
+import { Center, Flex, Link, Icon, Box, useBreakpointValue } from '@chakra-ui/react'
 import { jumpAnchor } from '../utils'
 import { motion } from 'framer-motion'
 import { TwitterIconSvg } from './icons/twitter.svg'
@@ -25,6 +25,7 @@ const LinkItem = ({ children, onClick }: { children: string; onClick: () => void
 }
 
 export const Footer: FC = () => {
+  const containerH = useBreakpointValue({ base: 200, md: 300 })!
   return (
     <motion.div
       style={{ width: '100%' }}
@@ -39,8 +40,8 @@ export const Footer: FC = () => {
       <Center w="100%" pt="123px" pb="20px" fontFamily="Space Mono" color="#A7A7A7">
         <Flex
           w="100%"
-          maxW="1280px"
-          px="20px"
+          maxW="1480px"
+          px={{ base: '20px', md: '80px' }}
           justify="space-between"
           direction={{ base: 'column', md: 'row' }}
           gap="20px"
@@ -81,8 +82,8 @@ export const Footer: FC = () => {
           </Flex>
         </Flex>
       </Center>
-      <Box opacity={0.6} h={{ base: '120px', md: '400px' }}>
-        <UnicornScene jsonFilePath="/footer.json" width="100%" height="100%" />
+      <Box position="relative" w="100%" h={containerH} opacity={0.6}>
+        <UnicornScene jsonFilePath="/footer.json" width="100%" height="100%" dpi={2} />
       </Box>
     </motion.div>
   )

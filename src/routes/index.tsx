@@ -3,7 +3,6 @@ import { Box, Center, Flex, Heading, VStack } from '@chakra-ui/react'
 import { type FC } from 'react'
 import { motion } from 'framer-motion'
 import { keyframes } from '@emotion/react'
-import UnicornScene from 'unicornstudio-react'
 import CountUpText from '../components/CountUpText'
 import Title from '../components/Title'
 import ServiceLines from '../components/ServiceLines'
@@ -71,19 +70,11 @@ function Index() {
         },
       }}
     >
-      <Box
-        className="absolute w-full left-0 z-[-1] opacity-[0.6]"
-        h={{ base: '50vh', md: '100vh' }}
-        top={{ base: '0', md: '-0' }}
-        transform={{ base: 'translateY(60px)', md: 'translateY(-60px)' }}
-      >
-        <UnicornScene jsonFilePath="/motion.json" width="100%" height="100%" />
-      </Box>
       <Flex direction="column" w="100%" maxW="1480px" align="center" px="20px">
         <Flex minH={{ base: '750px', md: 'calc(100vh - 60px)' }} align="center" id="HOME">
           <Box className="mx-auto" minH={{ base: 'auto', xl: '400px' }} color="#fff">
             <Heading
-              fontSize={{ base: '36px', md: '64px' }}
+              fontSize={{ base: '22px', md: '64px' }}
               lineHeight={{ base: '150%', md: '80px' }}
               animation={`${titleAnimation} 5s infinite linear`}
             >
@@ -135,6 +126,14 @@ function Index() {
             </Box>
           </Box>
         </Flex>
+      </Flex>
+      <Flex
+        direction="column"
+        w="100%"
+        maxW="1480px"
+        align="center"
+        px={{ base: '20px', md: '80px' }}
+      >
         <AboutSection />
       </Flex>
 
@@ -151,7 +150,7 @@ function Index() {
           maxW="1480px"
           align="center"
           mx="auto"
-          px="20px"
+          px={{ base: '20px', md: '80px' }}
         >
           <Box textAlign="left" width="100%" mt={{ base: '30px', md: '44px' }}>
             <Title>/SERVICES</Title>
@@ -185,7 +184,12 @@ function Index() {
           whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
           id="PORTFOLIO"
         >
-          <Box textAlign="left" width="100%" mt={{ base: '34px', md: '44px' }} px="20px">
+          <Box
+            textAlign="left"
+            width="100%"
+            mt={{ base: '34px', md: '44px' }}
+            px={{ base: '20px', md: '80px' }}
+          >
             <Title>/PORTFOLIO</Title>
           </Box>
           <Box mt={{ base: '64px', md: '114px' }} width="100%" h={{ base: '200px', md: '300px' }}>

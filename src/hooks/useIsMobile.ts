@@ -1,24 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-const useIsMobile = (breakpoint = 768) => {
+const useIsMobile = (breakpoint = 768): boolean => {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= breakpoint)
+    if (typeof window === 'undefined') return // SSR 安全判断
+
+    const mediaQuery = window.matchMedia(`(max-width: ${breakpoint}px)`)
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches)
     }
 
-    // Initial check
-    handleResize()
+    // 初始设置
+    setIsMobile(mediaQuery.matches)
 
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize)
+    // 添加监听器（兼容旧浏览器）
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange)
+    }
 
-    // Clean up the event listener on unmount
     return () => {
-      window.removeEventListener('resize', handleResize)
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleChange)
+      }
     }
-  }, [breakpoint]) // Re-run effect if breakpoint changes
+  }, [breakpoint])
 
   return isMobile
 }

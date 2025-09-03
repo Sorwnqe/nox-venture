@@ -111,8 +111,23 @@ export const NavigationBar: FC = () => {
         w="100%"
         onMouseEnter={() => setShowCursor(true)}
         onMouseLeave={() => setShowCursor(false)}
+        bg="transparent"
       >
-        <Flex justify="space-between" w="100%" maxW="1280px" px="20px" align="center" h="60px">
+        <Flex
+          justify="space-between"
+          w="100%"
+          maxW="1280px"
+          px="20px"
+          align="center"
+          h="60px"
+          bg="transparent"
+        >
+          {isMobile && (
+            <Box as={Link} to="/">
+              <Icon as={LogoTextSvg} w="155px" h="60px" />
+            </Box>
+          )}
+
           <Menu
             onOpen={() => {
               setShowCursor(true)
@@ -194,9 +209,11 @@ export const NavigationBar: FC = () => {
               </BgWithIcon>
             </MenuList>
           </Menu>
-          <Box as={Link} to="/">
-            <Icon as={LogoTextSvg} w="155px" h="60px" />
-          </Box>
+          {!isMobile && (
+            <Box as={Link} to="/">
+              <Icon as={LogoTextSvg} w="155px" h="60px" />
+            </Box>
+          )}
 
           <Menu
             onOpen={() => {

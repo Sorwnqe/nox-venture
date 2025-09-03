@@ -129,7 +129,7 @@ Nox Ventures Website Contact System`
       }
 
       // 生成 mailto URL
-      const recipient = 'info@noxventure.com'
+      const recipient = 'info@nox.ventures'
       const subject = this.generateSubject(data)
       const body = this.generateEmailBody(data)
 

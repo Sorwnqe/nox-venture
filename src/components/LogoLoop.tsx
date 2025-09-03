@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import '../styles/logoloop.css'
+import { Box } from '@chakra-ui/react'
+import { keyframes } from '@emotion/react'
 
 export type LogoItem =
   | {
@@ -10,6 +12,7 @@ export type LogoItem =
     }
   | {
       src: string
+      srcLight?: string
       alt?: string
       href?: string
       title?: string
@@ -257,23 +260,60 @@ export const LogoLoop = React.memo<LogoLoopProps>(
       (item: LogoItem, key: React.Key) => {
         const isNodeItem = 'node' in item
 
-        const content = isNodeItem ? (
-          <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
-            {item.node}
-          </span>
-        ) : (
-          <img
-            src={item.src}
-            srcSet={item.srcSet}
-            sizes={item.sizes}
-            width={item.width}
-            height={item.height}
-            alt={item.alt ?? ''}
-            title={item.title}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
+        const content = (
+          <Box
+            sx={{
+              '.item-img': {
+                display: 'block',
+              },
+              '.item-img-hover': {
+                display: 'none',
+              },
+            }}
+            _hover={{
+              '.item-img': {
+                display: 'none',
+              },
+              '.item-img-hover': {
+                display: 'block',
+              },
+            }}
+          >
+            {isNodeItem ? (
+              <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
+                {item.node}
+              </span>
+            ) : (
+              <>
+                <img
+                  src={item.src}
+                  srcSet={item.srcSet}
+                  sizes={item.sizes}
+                  width={item.width || '100%'}
+                  height={item.height || '100%'}
+                  alt={item.alt ?? ''}
+                  title={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                  className="item-img"
+                />
+                <img
+                  src={item.srcLight}
+                  srcSet={item.srcSet}
+                  sizes={item.sizes}
+                  width={item.width || '100%'}
+                  height={item.height || '100%'}
+                  alt={item.alt ?? ''}
+                  title={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                  className="item-img-hover"
+                />
+              </>
+            )}
+          </Box>
         )
 
         const itemAriaLabel = isNodeItem ? item.ariaLabel ?? item.title : item.alt ?? item.title

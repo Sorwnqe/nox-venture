@@ -50,9 +50,11 @@
   image-rendering: -webkit-optimize-contrast;
   -webkit-user-drag: none;
   pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   /* Links handle interaction */
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(0.7);
+  /* transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  */
+  transform: scale(0.9);
 }
 
 .logoloop--scale-hover .logoloop__item {
@@ -61,7 +63,7 @@
 
 .logoloop--scale-hover .logoloop__item:hover img,
 .logoloop--scale-hover .logoloop__item:hover .logoloop__node {
-  transform: scale(0.8);
+  transform: scale(1);
   transform-origin: center center;
 }
 
@@ -119,5 +121,22 @@
   .logoloop__item img,
   .logoloop__node {
     transition: none !important;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+      opacity: 0;
   }
 }

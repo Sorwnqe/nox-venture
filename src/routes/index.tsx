@@ -208,10 +208,36 @@ function Index() {
   )
 }
 const techLogos: LogoItem[] = [
-  { src: '/images/logos/surge.png', alt: 'metis', href: 'https://surgeai.io' },
-  { src: '/images/logos/scallop.png', alt: 'scallop', href: 'https://scallop.io' },
-  { src: '/images/logos/cetus.png', alt: 'cetus', href: 'https://cetus.zone' },
-  { src: '/images/logos/metis.png', alt: 'metis', href: 'https://metis.io' },
+  {
+    src: '/images/logos/surge.png',
+    srcLight: '/images/logos/light/surge.png',
+    alt: 'metis',
+    href: 'https://surgeai.io',
+  },
+  {
+    src: '/images/logos/scallop.png',
+    srcLight: '/images/logos/light/scallop.png',
+    alt: 'scallop',
+    href: 'https://scallop.io',
+  },
+  {
+    src: '/images/logos/cetus.png',
+    srcLight: '/images/logos/light/cetus.png',
+    alt: 'cetus',
+    href: 'https://cetus.zone',
+  },
+  {
+    src: '/images/logos/metis.png',
+    srcLight: '/images/logos/light/metis.png',
+    alt: 'metis',
+    href: 'https://metis.io',
+  },
+  {
+    src: '/images/logos/book.png',
+    srcLight: '/images/logos/light/book.png',
+    alt: 'book',
+    href: 'https://www.promptwords.ai/',
+  },
 ]
 
 const services = [

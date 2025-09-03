@@ -102,7 +102,7 @@ class EmailService {
       timeZoneName: 'short',
     })
 
-    const emailBody = `Hello Nox Venture Team,
+    const emailBody = `Hello Nox Ventures Team,
 
 please input something....
 
@@ -113,7 +113,7 @@ Contact Information:
 - Source: Website Contact Form
 
 Best regards,
-Nox Venture Website Contact System`
+Nox Ventures Website Contact System`
 
     return this.escapeMailtoParam(emailBody)
   }
@@ -179,7 +179,7 @@ Nox Venture Website Contact System`
   static copyEmailToClipboard(data: EmailData) {
     const timestamp = new Date().toLocaleString()
     const emailContent = `
-Hello Nox Venture Team,
+Hello Nox Ventures Team,
 
 please input something....
 
@@ -190,7 +190,7 @@ Contact Information:
 - Source: Website Contact Form
 
 Best regards,
-Nox Venture Website Contact System`
+Nox Ventures Website Contact System`
 
     copy(emailContent, { format: 'text/plain', message: 'Email copied to clipboard' })
   }

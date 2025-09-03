@@ -215,7 +215,7 @@ const techLogos: LogoItem[] = [
 ]
 
 const services = [
-  <ServiceLines text="VENTURE CAPITAL" count="001" contentW="1480px" />,
+  <ServiceLines text="VENTURES CAPITAL" count="001" contentW="1480px" />,
   <ServiceLines text="ADVISORY & STRATEGY" count="002" contentW="1480px" />,
   <ServiceLines text="MARKETING & COMMUNITY BUILDING" count="003" contentW="1480px" />,
   <ServiceLines text="CAPITAL MARKETS & TRADING" count="004" contentW="1480px" />,

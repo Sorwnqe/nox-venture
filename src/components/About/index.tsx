@@ -6,7 +6,7 @@ import TextType from '../TextType'
 
 export const AboutSection = () => {
   const textSegments: Array<string> = [
-    'NOX Venture is a Full-Lifecycle Crypto Incubation Fund.',
+    'NOX Ventures is a Full-Lifecycle Crypto Incubation Fund.',
     'We live on the frontier of Web3 and believe in progress through innovation.',
     'We partner with ambitious teams from the earliest stages, acting as',
     'strategic co-founders to guide projects from idea to exchange listing.',

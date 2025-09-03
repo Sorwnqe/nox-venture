@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import '../styles/logoloop.css'
 import { Box } from '@chakra-ui/react'
-import { keyframes } from '@emotion/react'
 
 export type LogoItem =
   | {

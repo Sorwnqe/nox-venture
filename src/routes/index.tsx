@@ -238,6 +238,12 @@ const techLogos: LogoItem[] = [
     alt: 'book',
     href: 'https://www.promptwords.ai/',
   },
+  {
+    src: '/images/logos/sign.png',
+    srcLight: '/images/logos/light/sign.png',
+    alt: 'sign',
+    href: 'https://sign.global/',
+  },
 ]
 
 const services = [

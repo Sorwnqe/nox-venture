@@ -1,19 +1,17 @@
 
 @font-face {
-  font-family: Minecraft;
-  src: url(/fonts/Minecraft.ttf);
-}
-
-@font-face {
-  font-family: Monopik;
-  src: url(/fonts/Monopik.otf);
-}
-@font-face {
   font-family: Space Mono;
   src: url(/fonts/SpaceMono-Regular.ttf);
 }
 
 @font-face {
-  font-family: Dotemp;
-  src: url(/fonts/Dotemp-8bit.ttf);
+  font-family: Md_Gothic;
+  src: url(/fonts/Md_Gothic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: Brandon;
+  src:  url(/fonts/brandon-text-regular.eot) format("embedded-opentype"),
+        url(/fonts/brandon-text-regular.woff) format("woff"),
+        url(/fonts/brandon-text-regular.woff2) format("woff2");
 }

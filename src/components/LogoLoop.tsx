@@ -36,6 +36,7 @@ export interface LogoLoopProps {
   ariaLabel?: string
   className?: string
   style?: React.CSSProperties
+  isMobile?: boolean
 }
 
 const ANIMATION_CONFIG = {
@@ -191,6 +192,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     className,
     style,
     boxHeight,
+    isMobile,
   }) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const trackRef = useRef<HTMLDivElement>(null)
@@ -285,7 +287,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             ) : (
               <>
                 <img
-                  src={item.src}
+                  src={isMobile ? item.srcLight : item.src}
                   srcSet={item.srcSet}
                   sizes={item.sizes}
                   width={item.width || '100%'}

@@ -35,7 +35,7 @@ export const AboutSection = () => {
         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
       >
         <Box textAlign="left" width="100%" mt="44px">
-          <Title>/ABOUT</Title>
+          <Title>ABOUT</Title>
         </Box>
       </motion.div>
 

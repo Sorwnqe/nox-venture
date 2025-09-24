@@ -20,6 +20,7 @@ const ServiceLines = ({
         color: '#000',
 
         '.service-count': {
+          color: '#000',
           opacity: 1,
         },
         '.service-img': {
@@ -34,7 +35,7 @@ const ServiceLines = ({
         letterSpacing="2px"
         fontWeight="400"
         alignItems="center"
-        fontFamily="Minecraft"
+        fontFamily="Md_Gothic"
         px={{ base: '40px', md: '120px' }}
       >
         <Flex
@@ -42,7 +43,13 @@ const ServiceLines = ({
           gap={{ base: '20px', md: '20px' }}
           alignItems="center"
         >
-          <Text className="service-count" opacity="0" transition="0.4s all ease-in">
+          <Text
+            className="service-count"
+            opacity="0"
+            transition="0.4s all ease-in"
+            fontFamily="Brandon"
+            fontWeight="700"
+          >
             {count}
           </Text>
           {text}

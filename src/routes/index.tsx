@@ -153,7 +153,7 @@ function Index() {
           px={{ base: '20px', md: '80px' }}
         >
           <Box textAlign="left" width="100%" mt={{ base: '30px', md: '44px' }}>
-            <Title>/SERVICES</Title>
+            <Title>SERVICES</Title>
           </Box>
         </Flex>
       </motion.div>
@@ -190,7 +190,7 @@ function Index() {
             mt={{ base: '34px', md: '44px' }}
             px={{ base: '20px', md: '80px' }}
           >
-            <Title>/PORTFOLIO</Title>
+            <Title>PORTFOLIO</Title>
           </Box>
           <Box mt={{ base: '64px', md: '114px' }} width="100%" h={{ base: '200px', md: '300px' }}>
             <LogoLoop
@@ -200,6 +200,7 @@ function Index() {
               pauseOnHover
               scaleOnHover
               fadeOut
+              isMobile={isMobile}
             />
           </Box>
         </motion.div>

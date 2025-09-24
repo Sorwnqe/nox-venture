@@ -6,9 +6,10 @@ const Title = ({ children, ...props }: { children: ReactNode } & TextProps) => {
     <Heading
       as={'h3'}
       fontSize={{ base: '20px', md: '32px' }}
-      fontWeight={'400'}
-      letterSpacing="4px"
-      color={'rgba(255, 255, 255, 0.8)'}
+      fontWeight="300"
+      fontFamily="Brandon"
+      letterSpacing="2px"
+      color={'#636363'}
       {...props}
     >
       {children}

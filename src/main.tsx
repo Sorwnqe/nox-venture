@@ -35,9 +35,9 @@ if (rootElement) {
               useSystemColorMode: false,
             },
             fonts: {
-              heading: `Monopik, Inter, sans-serif`,
+              heading: `Md_Gothic, Inter, sans-serif`,
               body: `Space Mono, Inter, sans-serif`,
-              Title: `Monopik, Inter, sans-serif`,
+              Title: `Brandon, Inter, sans-serif`,
             },
             styles: {
               global: () => ({

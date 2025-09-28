@@ -192,7 +192,6 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     className,
     style,
     boxHeight,
-    isMobile,
   }) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const trackRef = useRef<HTMLDivElement>(null)
@@ -287,7 +286,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             ) : (
               <>
                 <img
-                  src={isMobile ? item.srcLight : item.src}
+                  src={item.src}
                   srcSet={item.srcSet}
                   sizes={item.sizes}
                   width={item.width || '100%'}

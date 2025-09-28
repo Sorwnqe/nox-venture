@@ -110,6 +110,7 @@ function Index() {
               justify="center"
               border="1px solid #6C6C6C"
               fontWeight={400}
+              fontFamily="Minecraft"
             >
               $<CountUpText to={584499499.11} separator="," />
             </Flex>
@@ -248,9 +249,9 @@ const techLogos: LogoItem[] = [
 ]
 
 const services = [
-  <ServiceLines text="VENTURES CAPITAL" count="001" contentW="1480px" />,
-  <ServiceLines text="ADVISORY & STRATEGY" count="002" contentW="1480px" />,
-  <ServiceLines text="MARKETING & COMMUNITY BUILDING" count="003" contentW="1480px" />,
+  <ServiceLines text="VENTURE CAPITAL" count="001" contentW="1480px" />,
+  <ServiceLines text="ADVISORY STRATEGY & INCUBATION" count="002" contentW="1480px" />,
+  <ServiceLines text="MARKETING & COMMUNITY" count="003" contentW="1480px" />,
   <ServiceLines text="CAPITAL MARKETS & TRADING" count="004" contentW="1480px" />,
-  <ServiceLines text="INCUBATION" count="005" contentW="1480px" />,
+  // <ServiceLines text="INCUBATION" count="005" contentW="1480px" />,
 ]

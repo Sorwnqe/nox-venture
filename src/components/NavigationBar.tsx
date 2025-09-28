@@ -25,6 +25,7 @@ import { socials } from '../env'
 import { LogoTextSvg } from './icons/logo-text.svg'
 import EmailService from '../utils/sendEmail'
 import useIsMobile from '../hooks/useIsMobile'
+import { MenuSvgIcon } from './icons/menu.svg'
 
 const Item = ({ children, ...props }: MenuItemProps) => {
   return (
@@ -139,7 +140,7 @@ export const NavigationBar: FC = () => {
             }}
           >
             <MenuButton className="cursor-target">
-              <BridgeText text="MENU" />
+              {isMobile ? <Icon as={MenuSvgIcon} color="#CFCFCF" /> : <BridgeText text="MENU" />}
             </MenuButton>
             <MenuList
               bg="rgba(20, 20, 20, 0.5)"
@@ -225,9 +226,11 @@ export const NavigationBar: FC = () => {
               setIsOpen(false)
             }}
           >
-            <MenuButton className="cursor-target">
-              <BridgeText text="CONTACT US" />
-            </MenuButton>
+            {!isMobile && (
+              <MenuButton className="cursor-target">
+                <BridgeText text="CONTACT US" />
+              </MenuButton>
+            )}
             <MenuList
               bg="rgba(20, 20, 20, 0.5)"
               backdropFilter="blur(24px)"

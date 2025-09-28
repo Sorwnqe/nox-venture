@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, StyleProps, Text } from '@chakra-ui/react'
 import { ElementType } from 'react'
 
 const BridgeText = ({
@@ -9,7 +9,7 @@ const BridgeText = ({
   text: string
   as?: ElementType
   className?: string
-}) => {
+} & StyleProps) => {
   return (
     <Flex alignItems="center" gap="8px" as={as} {...props}>
       <Box bg="#A7A7A7" w="6px" h="6px" className="bridge-sq"></Box>

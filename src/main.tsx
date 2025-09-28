@@ -35,7 +35,7 @@ if (rootElement) {
               useSystemColorMode: false,
             },
             fonts: {
-              heading: `Md_Gothic, Inter, sans-serif`,
+              heading: `Md_Gothic, Brandon, Inter, sans-serif`,
               body: `Space Mono, Inter, sans-serif`,
               Title: `Brandon, Inter, sans-serif`,
             },

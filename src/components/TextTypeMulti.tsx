@@ -13,6 +13,7 @@ interface MultiLineTextTypeProps {
   variableSpeed?: { min: number; max: number }
   onComplete?: () => void
   startOnVisible?: boolean
+  linesClass?: string
 }
 
 const TextTypeMulti = ({
@@ -28,6 +29,7 @@ const TextTypeMulti = ({
   variableSpeed,
   onComplete,
   startOnVisible = false,
+  linesClass,
   ...props
 }: MultiLineTextTypeProps & React.HTMLAttributes<HTMLElement>) => {
   const [currentCharIndex, setCurrentCharIndex] = useState(0)
@@ -178,7 +180,7 @@ const TextTypeMulti = ({
     },
     <>
       {lines.map((line, lineIndex) => (
-        <div key={lineIndex} className="block">
+        <div key={lineIndex} className={`block ${linesClass}`}>
           {line.split('').map((char, charIndex) => {
             // 计算全局字符索引
             const globalIndex = allChars.findIndex(

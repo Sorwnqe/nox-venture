@@ -78,10 +78,10 @@ function Index() {
               lineHeight={{ base: '150%', md: '80px' }}
               animation={`${titleAnimation} 5s infinite linear`}
             >
-              <Box className="text-center" letterSpacing="5px">
+              <Box className="text-center" letterSpacing={{ base: '2px', md: '5px' }}>
                 <GraduallyEnteringText text="FULL-LIFECYCLE CRYPTO" />
               </Box>
-              <Box className="text-center" letterSpacing="5px">
+              <Box className="text-center" letterSpacing={{ base: '2px', md: '5px' }}>
                 <GraduallyEnteringText text="INCUBATION FUND" />
               </Box>
               <Box

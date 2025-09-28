@@ -146,7 +146,7 @@ export const AboutSection = () => {
               )}
 
               {/* 视频容器 */}
-              <Box w="100%" h="100%" overflow="hidden" borderRadius="50%" zIndex={0}>
+              <Box w="100%" h="100%" overflow="hidden" borderRadius="50%" zIndex={0} p="10px">
                 <video
                   src="/about-t.mp4"
                   autoPlay

@@ -112,7 +112,7 @@ function Index() {
               fontWeight={400}
               fontFamily="Minecraft"
             >
-              $<CountUpText to={4023241154225} separator="," />
+              $<CountUpText to={3961866113904} separator="," />
             </Flex>
             <Box
               mt={'17px'}

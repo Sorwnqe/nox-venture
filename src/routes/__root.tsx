@@ -10,7 +10,7 @@ export const Route = createRootRoute({
     <>
       <Flex as="main" direction="column" position="relative" zIndex={1}>
         <Box
-          className="absolute w-full left-0 z-[-1] opacity-[0.5]"
+          className="absolute w-full left-0 z-[-1] opacity-[0.7]"
           h={{ base: '40vh', md: '100vh' }}
           top={{ base: '0', md: '-0' }}
           transform={{ base: 'translateY(60%)', md: 'unset' }}

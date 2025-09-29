@@ -240,41 +240,43 @@ export const NavigationBar: FC = () => {
               onMouseEnter={() => setShowCursor(false)}
               zIndex="9999"
             >
-              <Box bg="unset" px="8px" py="6px">
-                <Input
-                  placeholder="Your name"
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                />
-              </Box>
-              <Box bg="unset" px="8px" py="6px">
-                <Input
-                  placeholder="Your email"
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                />
-              </Box>
-              <Box bg="unset" px="8px" py="6px">
-                <Input
-                  placeholder="More info"
-                  onChange={(e) => handleInputChange('info', e.target.value)}
-                />
-              </Box>
-              <Box bg="unset" px="8px" py="6px" mt="8px">
-                <Button bg="#000" w="100%" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              </Box>
-              <Box mt="12px" h="123px" mb="10px" mx="8px" bg="#000">
-                {isOpen && (
-                  <video
-                    src="/menu.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  ></video>
-                )}
-              </Box>
+              <BgWithIcon>
+                <Box bg="unset" px="8px" py="6px">
+                  <Input
+                    placeholder="Your name"
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                  />
+                </Box>
+                <Box bg="unset" px="8px" py="6px">
+                  <Input
+                    placeholder="Your email"
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                  />
+                </Box>
+                <Box bg="unset" px="8px" py="6px">
+                  <Input
+                    placeholder="More info"
+                    onChange={(e) => handleInputChange('info', e.target.value)}
+                  />
+                </Box>
+                <Box bg="unset" px="8px" py="6px" mt="8px">
+                  <Button bg="#000" w="100%" onClick={handleSubmit}>
+                    Submit
+                  </Button>
+                </Box>
+                <Box mt="12px" h="123px" mb="10px" mx="8px" bg="#000">
+                  {isOpen && (
+                    <video
+                      src="/menu.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    ></video>
+                  )}
+                </Box>
+              </BgWithIcon>
             </MenuList>
           </Menu>
         </Flex>
